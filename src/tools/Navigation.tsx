@@ -2,45 +2,26 @@ import React from 'react';
 import { NavLink, Route, Routes } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 
+//import the screens here and add them in the Navigation component
 
+import AboutMeScreen from "../screens/AboutMeScreen";
+import HomePageScreen from "../screens/HomePageScreen";
 
-
-const Navigate : void = (Screen : string) => {
+// the function you use in order to switch screens
+export const Navigate : (Screen: string) => null = (Screen : string) => {
     const nav = useNavigate();
-    
+    // nav("/root);
+    nav(`/${Screen}`);
+    return null;
 };
 
 // underneath are defined the different roots, pages of the website
 // if you create a new page, insert it here
-const Navigation: React.FC = () => {
+export const Navigation: React.FC = () => {
     return (
         <Routes>
-            <Route path='/' element={<Home/>}/>
-            <Route path='/about' element={<About/>}/>
-            <Route path='/contact' element={<Contact/>}/>
+            <Route path='/' element={<HomePageScreen/>}/>
+            <Route path='/about' element={<AboutMeScreen/>}/>
         </Routes>
     );
 }
-
-const Home: React.FC = () => (
-    <div className='home'>
-        <h1>Welcome to my portfolio website</h1>
-        <p> Feel free to browse around and learn more about me.</p>
-    </div>
-);
-
-const About = () => (
-    <div className='about'>
-        <h1>About Me</h1>
-        <p>Ipsum dolor dolorem consectetur est velit fugiat. Dolorem provident corporis fuga saepe distinctio ipsam? Et quos harum excepturi dolorum molestias?</p>
-        <p>Ipsum dolor dolorem consectetur est velit fugiat. Dolorem provident corporis fuga saepe distinctio ipsam? Et quos harum excepturi dolorum molestias?</p>
-    </div>
-);
-
-const Contact = () => (
-    <div className='contact'>
-        <h1>Contact Me</h1>
-        <p>You can reach me via email: <strong>hello@example.com</strong></p>
-    </div>
-);
-export default Navigation;
